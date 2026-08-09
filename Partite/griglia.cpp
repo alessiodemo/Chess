@@ -20,7 +20,7 @@ int main(int argc, char **arg)
 
 		ofstream fs ("LogPC.txt");
 
-		//write menu and get mathch type
+		//write menu and get match type
 		string tmp = arg[1];
 		if (tmp == "pc")
 			isPC = true;
