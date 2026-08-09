@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Scacchiera</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="setup">
+    <h1>Scacchiera</h1>
+    <button id="btnPcBianco">Gioca come Bianco (vs Computer)</button>
+    <button id="btnPcNero">Gioca come Nero (vs Computer)</button>
+    <button id="btnCc">Computer vs Computer</button>
+  </div>
+
+  <div id="gioco" style="display:none">
+    <div id="board" style="width: 480px"></div>
+    <div id="pannello">
+      <div id="stato"></div>
+      <ol id="storico"></ol>
+      <button id="btnNuova">Nuova partita</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

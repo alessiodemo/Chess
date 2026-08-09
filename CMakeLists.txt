@@ -23,11 +23,31 @@ Giocatori/GiocatoreUmano.cpp)
 
 add_library(partita Partite/Metodi.h Partite/griglia.cpp)
 
+add_library(gameSession server/GameSession.h server/GameSession.cpp)
+
 add_executable(scacchiera Partite/griglia.cpp)
 
 add_executable(replay Partite/replay.cpp)
 
+add_executable(server server/main.cpp)
+target_include_directories(server PRIVATE third_party/httplib)
 
+
+
+target_link_libraries(gameSession
+chess
+Pair
+Pezzo
+Computer
+GiocatoreUmano)
+
+target_link_libraries(server
+gameSession)
+
+if(WIN32)
+target_compile_definitions(server PRIVATE _WIN32_WINNT=0x0A00 WINVER=0x0A00)
+target_link_libraries(server ws2_32)
+endif()
 
 target_link_libraries(scacchiera
 chess

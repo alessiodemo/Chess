@@ -1,5 +1,17 @@
-*.exe 
-*.a
-*.cmake
+# Build output
+build/
 
-CMakeFiles/
+# Compiled binaries
+*.exe
+*.a
+*.o
+*.obj
+
+# Game/session logs generated at runtime
+WebLog*.txt
+PCvsCC.txt
+PCvsPC.txt
+LogPC.txt
+
+# Editor/IDE
+.vscode/
