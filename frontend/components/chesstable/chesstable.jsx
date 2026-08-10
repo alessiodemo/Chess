@@ -1,6 +1,6 @@
 import { Chessboard } from 'react-chessboard';
 
-function Scacchiera({ posizione, onMossa }) {
+export default function Scacchiera({ posizione, onMossa }) {
     return (
         <Chessboard 
             position={posizione}
