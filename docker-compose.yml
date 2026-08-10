@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    volumes:
+      - .:/app
+      - backend-build:/app/build
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - BACKEND_URL=http://backend:8080
+    volumes:
+      - ./frontend:/app
+      - frontend-node-modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  backend-build:
+  frontend-node-modules:

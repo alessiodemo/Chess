@@ -82,6 +82,6 @@ int main() {
     });
 
     std::cout << "Server avviato: apri http://127.0.0.1:8080 nel browser (lancia il .exe dalla cartella principale del progetto!)" << std::endl;
-    server.listen("127.0.0.1", 8080);
+    server.listen("0.0.0.0", 8080);
     return 0;
 }

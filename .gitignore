@@ -15,3 +15,6 @@ LogPC.txt
 
 # Editor/IDE
 .vscode/
+
+# Node (frontend/ has its own, this covers any accidental root-level installs)
+node_modules/
