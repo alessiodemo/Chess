@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     volumes:
-      - .:/app
+      - ./backend:/app
       - backend-build:/app/build
     ports:
       - "8080:8080"

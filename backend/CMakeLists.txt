@@ -30,9 +30,8 @@ add_executable(scacchiera Partite/griglia.cpp)
 add_executable(replay Partite/replay.cpp)
 
 add_executable(server server/main.cpp)
+
 target_include_directories(server PRIVATE third_party/httplib)
-
-
 
 target_link_libraries(gameSession
 chess
