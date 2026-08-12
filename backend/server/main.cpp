@@ -16,7 +16,6 @@ static void inviaErrore(httplib::Response& res, int codice, const std::string& m
 
 int main() {
     httplib::Server server;
-    server.set_mount_point("/", "./web");
 
     server.Post("/api/games", [](const httplib::Request& req, httplib::Response& res) {
         std::string mode = req.has_param("mode") ? req.get_param_value("mode") : "pc";
@@ -35,6 +34,17 @@ int main() {
         
         std::string json = sessione->toJSON();
         sessions[id] = std::move(sessione);
+        res.set_content(json, "application/json");
+    });
+
+    server.Delete(R"(/api/games/([^/]+))", [](const httplib::Request& req, httplib::Response& res) {
+        std::lock_guard<std::mutex> lock(mutex_sessioni);
+        auto it = sessions.find(req.matches[1].str());
+        if(it == sessions.end()) {inviaErrore(res, 404, "Partita non trovata"); return;}
+        sessions.erase(it);
+
+        res.status = 200;
+        std::string json = "{\"deleted\":true}";
         res.set_content(json, "application/json");
     });
 

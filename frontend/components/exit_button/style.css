@@ -1,0 +1,21 @@
+.exit-button {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.exit-button:hover {
+    border-color: #e5484d;
+    color: #e5484d;
+    background: rgba(229, 72, 77, 0.08);
+}
+
+.exit-button:active {
+    transform: scale(0.97);
+}
