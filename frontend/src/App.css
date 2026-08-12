@@ -1,28 +1,183 @@
 body {
-    font-family: sans-serif;
-    display: flex; 
-    justify-content: center; 
-    padding: 2rem; 
+    font-family: var(--sans);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: var(--bg);
 }
-#gioco {
-    display: flex; 
-    gap: 2rem; 
-    align-items: flex-start; 
+
+/* schermata di setup */
+#setup {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--code-bg);
+    box-shadow: var(--shadow);
+    text-align: center;
 }
-#pannello { 
-    min-width: 200px; 
+
+#setup h1 {
+    margin: 0 0 0.25rem;
+    font-size: 32px;
 }
-#stato { 
-    font-weight: bold; 
-    margin-bottom: 1rem; 
+
+#setup .subtitle {
+    color: var(--text);
+    margin-bottom: 1.25rem;
 }
-#storico {
-    max-height: 400px; 
-    overflow-y: auto; 
-    padding-left: 1.2rem; 
+
+#setup button {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-h);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
 }
-#setup button, #pannello button { 
-    display: block; 
-    margin: 0.5rem 0; 
-    padding: 0.5rem 1rem; 
+
+#setup button:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-bg);
+}
+
+#setup button:active {
+    transform: scale(0.98);
+}
+
+/* schermata di gioco */
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.game-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-bar .brand {
+    margin: 0;
+    font-size: 24px;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* scacchiera */
+.board-wrap {
+    width: min(520px, 92vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+}
+
+/* pannello laterale */
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 220px;
+    flex: 1 1 220px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--code-bg);
+    box-shadow: var(--shadow);
+    align-self: stretch;
+}
+
+.turn-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+}
+
+.turn-badge::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.turn-badge.is-white {
+    color: var(--text-h);
+    background: var(--bg);
+}
+
+.turn-badge.is-black {
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-color: var(--accent-border);
+}
+
+.panel-title {
+    margin: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+}
+
+.history {
+    margin: 0;
+    padding-left: 1.4rem;
+    max-height: 360px;
+    overflow-y: auto;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+}
+
+.history li {
+    padding: 0.15rem 0;
+    color: var(--text-h);
+}
+
+.history li::marker {
+    color: var(--text);
+}
+
+@media (max-width: 640px) {
+    .table {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .panel {
+        width: min(520px, 92vw);
+    }
 }
