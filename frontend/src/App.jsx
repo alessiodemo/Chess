@@ -28,15 +28,27 @@ function App() {
         <Panel state={state}/>
       </div>
     </div>
+  ) : page === 'computer' ? (
+    <div id="setup">
+      <button onClick={() => setPage('home')}>
+        Back to Home
+      </button>
+
+      <h1>Play vs PC</h1>
+      <p className="subtitle">Choose your Color</p>
+
+      <button onClick={ () => newMatch('pc', 'Bianco') }>Play as White (vs Computer)</button>
+      <button onClick={ () => newMatch('pc', 'Nero') }>Play as Black (vs Computer)</button>
+
+    </div>
   ) : (
     <div id="setup">
       <h1>♟ Scacchiera</h1>
       <p className="subtitle">Scegli come vuoi giocare</p>
-      <button onClick={ () => newMatch('pc', 'Bianco') }>Gioca come Bianco (vs Computer)</button>
-      <button onClick={ () => newMatch('pc', 'Nero') }>Gioca come Nero (vs Computer)</button>
+      <button onClick={ () => setPage("computer") }>Plays against Computer</button>
       <button onClick={ () => newMatch('cc') }>Computer vs Computer</button>
     </div>
-  );
+  )
 
   async function newMatch(nuovaMode, colore) {
     const params = new URLSearchParams({ mode: nuovaMode });
