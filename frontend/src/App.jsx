@@ -28,24 +28,12 @@ function App() {
         <Panel state={state}/>
       </div>
     </div>
-  ) : page === 'computer' ? (
-    <div id="setup">
-      <button onClick={() => setPage("home")}>
-        Back to Home
-      </button>
-
-      <h1> Human vs Computer</h1>
-      <p className="subtitle">Choose your color</p>
-
-      <button onClick={ () => newMatch('pc', 'Bianco') }>Gioca come Bianco (vs Computer)</button>
-      <button onClick={ () => newMatch('pc', 'Nero') }>Gioca come Nero (vs Computer)</button>
-    </div>
   ) : (
     <div id="setup">
       <h1>♟ Scacchiera</h1>
       <p className="subtitle">Scegli come vuoi giocare</p>
-      <button onClick={ () => setPage("computer")}> Human vs Computer</button>
-      
+      <button onClick={ () => newMatch('pc', 'Bianco') }>Gioca come Bianco (vs Computer)</button>
+      <button onClick={ () => newMatch('pc', 'Nero') }>Gioca come Nero (vs Computer)</button>
       <button onClick={ () => newMatch('cc') }>Computer vs Computer</button>
     </div>
   );
