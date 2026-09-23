@@ -17,6 +17,18 @@ function App() {
   const [ state, setState ] = useState(null);
   const [ page, setPage ] = useState("home");
 
+  useLayoutEffect( () => {
+    if (mode != 'cc' || !state || state.over) return;
+
+    const timer = setTimeout( async () => {
+      const res = await fetch(`/api/games/${gameId}/step`, { method: 'POST' });
+      const state = await res.json();
+      setState(state);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [state, mode]);
+
   return state ? (
     <div className="game">
       <header className="game-bar">
@@ -83,17 +95,6 @@ function App() {
     setMode(null);
   }
 
-  useLayoutEffect( () => {
-    if (mode != 'cc' || !state || state.over) return;
-
-    const timer = setTimeout( async () => {
-      const res = await fetch(`/api/games/${gameId}/step`, { method: 'POST' });
-      const state = await res.json();
-      setState(state);
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [state, mode]);
 }
 
 export default App;
