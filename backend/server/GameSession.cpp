@@ -105,7 +105,11 @@ void GameSession::computerMove()
     attore->move(chessboard, log);
     // Computer::move non restituisce le case toccate: per la UI web ridisegniamo
     // l'intera scacchiera invece di animare la singola mossa del computer.
-    afterHalfMove(attore->getColor(), "", "");
+    afterHalfMove(
+    attore->getColor(),
+    attore->getLastMoveFrom(),
+    attore->getLastMoveTo()
+    );
 }
 
 void GameSession::afterHalfMove(const std::string& moverColor, const std::string& from, const std::string& to)

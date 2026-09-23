@@ -25,10 +25,18 @@ class Computer:public GiocatoreUmano
          Setta max in base al parametro dato
       */
       void setMax(int massimo);
+
+      const std::string& getLastMoveFrom() const;
+
+      const std::string& getLastMoveTo() const;
+
    private:
       /*
          max indica il numero massimo di mosse che il singolo computer può fare
       */
       int max;
+
+      std::string lastMoveFrom;
+      std::string lastMoveTo;
 };
 #endif

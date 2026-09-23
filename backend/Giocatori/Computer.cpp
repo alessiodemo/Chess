@@ -32,6 +32,9 @@ void Computer::move(chessTable& scacchiera, std::ofstream& is)
    //Variabili per scrivere nel file
    std::string partenza = "";
    std::string arrivo = "";
+
+   lastMoveFrom = "";
+   lastMoveTo = "";
    
    //Iteratori per scorrere le rispettive liste
    std::list<Pezzo*>::iterator itPezzo;
@@ -128,6 +131,9 @@ void Computer::move(chessTable& scacchiera, std::ofstream& is)
 			arrivo.push_back(-1 * coppiaArrocco.getLine() + 56);
 		}
    }
+
+   lastMoveFrom = partenza;
+   lastMoveTo = arrivo;
    
    //Aggiorno i pedoni in caso si sia spostato nella casella di promozione e successivamente aggiorno le mosse dei pezzi
    scacchiera.pedestrian_becomes_queen(getTransform());
@@ -140,4 +146,11 @@ int Computer::getMax()
 void Computer::setMax(int massimo)
 {
    max = massimo;
+}
+const std::string& Computer::getLastMoveFrom() const {
+    return lastMoveFrom;
+}
+
+const std::string& Computer::getLastMoveTo() const {
+    return lastMoveTo;
 }
